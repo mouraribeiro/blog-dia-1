@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h3 class=" site-heading my-4 mt-3 text-white"> Bem vindo(a) ao Blog </h3>
+                    <p class="text-light"> Blog  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            {% for post in post_list %}
+            <div class="card mb-4 p-3">
+                <div class="card-body">
+                    <p>{{post.titulo}}</p>
+                    <hr>
+                    <p>{{post.subtitulo}}</p>
+                    <p>{{post.autor}}</p>
+                    <p>{{post.post| slice:":250"}}...</p>
+                    <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Leia mais</a>
+                </div>
+
+            </div>
+
+
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+</body>
+</html>
